@@ -2,6 +2,7 @@
 
 ####Scenarios
 1. One of the app servers dies (power cable yanked out).
+2. One of the nodes in the messaging cluster dies.
 2. All of the app servers leave the load-balancing pool.
 3. One of the app servers gets wiped clean and needs to be fully rebuilt from scratch.
 4. Database dies (power cable yanked out and/or process is killed ungracefully).
