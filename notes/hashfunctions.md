@@ -1,4 +1,4 @@
-#How Hash Algorithms Work
+#[How Hash Algorithms Work](http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software)
 
 
 ####What is a 'Hash Algorithm'?
