@@ -88,3 +88,55 @@ Why? By default, Hugo generates the site in the public folder. To have the maste
 rm -rf public
 git worktree add -B master public origin/master
 ```
+
+#### 4. Configure and generate the site
+
+The environment setup is done and it’s finally the moment to make the actual site.
+
+Create a new empty site tree
+```
+git checkout source
+../bin/hugo new site . --force
+git add config.toml archetypes/default.md
+git commit -m "Add fresh empty site"
+git push origin source
+```
+Add the Hugo theme. This site uses minimo theme
+Why minimo theme? It’s clean/minimalist. It supports categories/tags, renders correctly on desktop and mobile phones, and has built-in hooks to add custom Javascript and CSS.
+```
+git submodule add https://github.com/MunifTanjim/minimo themes/minimo
+git submodule init
+git submodule update
+cp themes/minimo/exampleSite/config.toml .
+```
+Modify the config.toml configuration file to fit your site.
+```
+baseURL = "https://jcarmack.github.io"
+title = "J. Carmack"
+[params]
+  description = "Carmack static site"
+[author.social]
+  codepen = ""
+  email = ""
+  facebook = ""
+  github = ""
+  instagram = ""
+  twitter = "ID_AA_Carmack"
+  linkedin = ""
+
+[[menu.main]]
+  name = "Blog"
+  weight = -70
+  identifier = "jcarmack"
+  url = "https://jcarmack.github.io"
+Commit the changes
+
+git add config.toml .gitmodules themes/minimo 
+git commit -m "Add minimo theme"
+git push origin source
+Test the site
+
+../bin/hugo server -D
+```
+
+If you open your web browser and you visit the address http://localhost:1313/ the site should load even if there is no content for the moment.
