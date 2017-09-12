@@ -89,7 +89,7 @@ rm -rf public
 git worktree add -B master public origin/master
 ```
 
-#### 4. Configure and generate the site
+#### 5. Configure and generate the site
 
 The environment setup is done and it’s finally the moment to make the actual site.
 
@@ -140,3 +140,36 @@ Test the site
 ```
 
 If you open your web browser and you visit the address http://localhost:1313/ the site should load even if there is no content for the moment.
+
+#### 6. Add the first post
+
+Replace the Hugo default template by the theme default template and generate the first post skeleton.
+```
+cp themes/minimo/archetypes/default.md archetypes/default.md
+../bin/hugo new post/first-post.md
+```
+
+Edit the content/post/first-post.md file. There is only the front matter right after the generation. That is the way Hugo takes informations to generate pages. Improve it in the same way than this example.
+```
+---
+categories:
+  - Others
+tags:
+  - hugo
+  - small talk
+title: "Welcome to my new website"
+slug: "Welcome message"
+date: 2017-09-05T05:58:27+01:00
+draft: true
+---
+```
+Below the last line of the front matter, the one with the 3 dashes --- this is where you add the content of the post. The format used is Markdown. Copy/paste the following block to see it in action… And give an appreciated credit!
+```
+## Welcome
+
+I'm very __happy__ to introduce my new website!  
+It's a static website that I have done in less than 3 hours with this [Hugo tutorial](https://fillmem.com/post/self-hosted-fast-secured-and-free-static-site/)
+```
+Test the site
+
+../bin/hugo server -D
