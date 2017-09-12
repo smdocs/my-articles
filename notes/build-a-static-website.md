@@ -54,3 +54,37 @@ You have to follow this scheme.
 If your Github username is jcarmack, creates the repository jcarmack.github.io. Make it public, do not add a README file, neither 
 a .gitignore or a license file. The master branch is the branch where generated pages are hosted, you don’t want any non 
 mandatory files there.
+
+#### 4. Initiate repository branches
+
+Push the first commit on the master branch to create it. Generated pages will be pushed on this branch.
+```
+cd site
+git init
+git remote add origin git@github.com:jcarmack/jcarmack.github.io.git
+git commit --allow-empty -m "Start the public branch"
+git push -u origin master
+```
+
+Create the source branch. Website source code will be pushed on this branch.
+The source branch has to have a .gitignore file to avoid to commit generated or temporary files. I use the online tool gitignore.io to generate .gitignore files. It is very convenient to get the usual files to ignore regarding OSX, vim and Hugo in one curl command.
+
+```
+git checkout --orphan source
+curl -L -s -o .gitignore https://www.gitignore.io/api/osx%2Cvim%2Chugo
+git add .gitignore
+git commit -m "Start to fill the memory"
+git push origin source
+```
+
+Verify that the .gitignore file generated at the previous step contains the line /public/. If the line does not exist add it and commit this change.
+```
+cat .gitignore | grep public
+/public/
+```
+Use the git worktree feature to checkout the master branch to the ignored public sub-folder.
+Why? By default, Hugo generates the site in the public folder. To have the master branch mapped to the public folder makes possible to easily chain site generation and publication steps without moving around files.
+```
+rm -rf public
+git worktree add -B master public origin/master
+```
