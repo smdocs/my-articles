@@ -173,3 +173,5 @@ It's a static website that I have done in less than 3 hours with this [Hugo tuto
 Test the site
 
 ../bin/hugo server -D
+
+[](https://fillmem.com/post/fast-secured-and-free-static-site/)
