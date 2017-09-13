@@ -190,7 +190,7 @@ git commit -m "Add the first post"
 git push origin source
 ```
 
-#### 7: A secured custom domain name
+#### 7. A secured custom domain name
 Github pages does not offer secured custom domain name. The best way to get this feature for free is to use Cloudflare.
 
 First you need to buy your fancy domain name. One of the places to go for that is the domain registrar Gandi. To buy your domain name is the only thing not free.
