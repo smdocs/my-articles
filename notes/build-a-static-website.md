@@ -180,6 +180,25 @@ To let Hugo generator knows that the post done in the previous section is ready 
 ```
  draft: false
 ```
-To be able to publish the site in one command add the publish_to_master.sh script at the root of your repository. 
+To be able to publish the site in one command add the [publish_to_master.sh](publish_to_master.sh) script at the root of your repository. 
+
+Commit the changes just before the last step
+```
+chmod u+x publish_to_master.sh
+git add * 
+git commit -m "Add the first post"
+git push origin source
+```
+
+#### 7: A secured custom domain name
+Github pages does not offer secured custom domain name. The best way to get this feature for free is to use Cloudflare.
+
+First you need to buy your fancy domain name. One of the places to go for that is the domain registrar Gandi. To buy your domain name is the only thing not free.
+
+Once your domain bought create a Cloudflare account. Add your domain name to your Couldflare account. Follow their guided setup, it is very well done.
+
+When you are asked to verify the DNS entries, add two A entries to point to Github servers. Up to date Github IPs can be found in their “Setting up an apex domain” help page.
+
+Add also a CNAME record to redirect the www subdomain to the root domain 
 
 [](https://fillmem.com/post/fast-secured-and-free-static-site/)
