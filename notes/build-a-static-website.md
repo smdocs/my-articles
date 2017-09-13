@@ -174,4 +174,12 @@ Test the site
 
 ../bin/hugo server -D
 
+#### 6. Publish the site with the new post
+
+To let Hugo generator knows that the post done in the previous section is ready to be published the draft value in the front matter has to be set to false.
+```
+ draft: false
+```
+To be able to publish the site in one command add the publish_to_master.sh script at the root of your repository. 
+
 [](https://fillmem.com/post/fast-secured-and-free-static-site/)
