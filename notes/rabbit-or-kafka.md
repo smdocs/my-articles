@@ -18,3 +18,4 @@ Mainly depends on the problem in hand.
 
 ### References
 1. [Replay capability tool](http://qdb.io/)
+2. [CloudKarafka]https://www.cloudkarafka.com/)
