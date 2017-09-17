@@ -15,6 +15,11 @@ Mainly depends on the problem in hand.
 3. Kafka does require Zookeeper and therefore depends on external services.
 4. Kafka presumes that producers generate a massive stream of events on their own timetable - there's no room for throttling producers because consumers are slow, since the data is too massive.
 5. Finally, an important difference between these two systems is that Rabbit offers per-message acknowledgments, while with Kafka you can only acknowledge all messages up to an offset. This has important consequences if processing a message fails: with Rabbit, processing will be re-tried. With Kafka, you can either drop the message or fail processing of a whole batch.
+6. In general Kafka is optimized for work with “fast” consumers. It can work with “slow” consumers pretty well, however partition-centric design has some consiquences that make dealing with some critical situations difficult.
+    - The major limitation is that each partition can have only one logical consumer (in the consumer group). So it means that if we are working with “slow” messages single issue (slow processing) blocks all other messages submitted to this partition after that message. Different strategies can be used to resolve this issues, one of them is to run another consumer group and sychronize it with existing consumer somehow to avoid duplicated processing of messages.
+
+### Conclusion
+> Kafka is good for “fast” and reliable consumers while RabbitMQ is good for “slow” and unreliable consumers
 
 ### References
 1. [Replay capability tool](http://qdb.io/)
