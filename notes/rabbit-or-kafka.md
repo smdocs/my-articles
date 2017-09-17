@@ -10,5 +10,6 @@ Mainly depends on the problem in hand.
 ### Kafka Features
 1. Kafka employs a dumb broker and uses smart consumers to read its buffer. 
     - Kafka does not attempt to track which messages were read by each consumer and only retain unread messages; rather, Kafka retains all messages for a set amount of time, and consumers are responsible to track their location in each log (consumer state). 
-Kafka can support a large number of consumers and retain large amounts of data with very little overhead. 
-Kafka does require Zookeeper and therefore depends on external services.
+2. Kafka can support a large number of consumers and retain large amounts of data with very little overhead. 
+3. Kafka does require Zookeeper and therefore depends on external services.
+4. Kafka presumes that producers generate a massive stream of events on their own timetable - there's no room for throttling producers because consumers are slow, since the data is too massive.
