@@ -26,3 +26,4 @@ Mainly depends on the problem in hand.
 2. [CloudKarafka](https://www.cloudkarafka.com/)
 3. [yurisubach blog](https://yurisubach.com/2016/05/19/kafka-or-rabbitmq/)
 4. [Kafka opinion](https://gist.github.com/markrendle/26e423b6597685757732)
+5. [Quora - article](https://www.quora.com/What-are-the-differences-between-Apache-Kafka-and-RabbitMQ)
