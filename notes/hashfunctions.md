@@ -1,13 +1,13 @@
-#[How Hash Algorithms Work](http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software)
+# How Hash Algorithms Work](http://www.metamorphosite.com/one-way-hash-encryption-sha1-data-software)
 
 
-####What is a 'Hash Algorithm'?
+#### What is a 'Hash Algorithm'?
 A hash function is simply an algorithm that takes a string of any length and reduces it to a unique fixed length string. 
 
-####What are hash algorithms used for?
+#### What are hash algorithms used for?
 Hashes are used to ensure data and message integrity, password validity, and are the basis of many other cryptographic systems. 
 
- Important properties:
+#### Important properties:
 Each hash is unique but always repeatable
 The word 'cat' will hash to something that no other word hashes too, but it will always hash to the same thing.
 
@@ -22,19 +22,23 @@ Example:
 ```
 
 Every time that anyone anywhere runs the word 'test' through the SHA-1 function, they should always get: a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.
+
 Also, it should be computationally infeasible to find any other word which also hashes to a94a8fe5ccb19ba61c4c0873d391e987982fbbd3.
+
 Finally, if I were to give you only 'a94a8fe5ccb19ba61c4c0873d391e987982fbbd3' and tell you that it came from the SHA-1, you should have absolutely no way to figure out what was put into the function to create that.
 
 Almost all computer passwords are stored in this fashion (though hopefully not with SHA-1). When you create a password the computer runs it through a hash function then stores only the result. Because the function is 'one-way', even if someone were to gain access to the file that stores that output they shouldn't be able to figure out your password.
+
 When the computer prompts you to enter your password to log in it will simply hash whatever you give it and then compare it to the stored hash of your password. 
+
 This is often why passwords must be reset. Because the computer never stores your actual 'plain text' password and only a fingerprint of it, there is no way for it to tell you what your password was. 
 
 
-####How hash algorithms actually work:
+#### How hash algorithms actually work:
 
 All of the information above could easily be found elsewhere on the internet in a much more thorough and accurate way. In fact, I have intentionally left out many details because there weren't relevant to my main cause. The reason I decided to write this was because I was absolutely fascinated by how these functions actually work, but was completely unable to find a working example online. Wikipedia not only has a great article, but also very wonderful 'pseudocode'. Pseudocode is like the blueprints without any of the details. What I was unable to find was anything that would actually show you step by step exactly how a word gets hashed. It is my plan to walk you through from start to finish exactly what happens inside a hash function. If you're more interested in what a hash function is, what they are used for, or a general overview of how they work, I highly suggest you read this wiki on the subject. If you want to see a working example of how a string becomes a hash then please read on. 
 
-#####Step 0: Initialize some variables
+##### Step 0: Initialize some variables
 There are five variables that need to be initialized.
 ```
 h0 = 01100111010001010010001100000001
@@ -44,31 +48,31 @@ h3 = 00010000001100100101010001110110
 h4 = 11000011110100101110000111110000
 ```
 
-#####Step 1: Pick a string
+##### Step 1: Pick a string
 In this example I am going to use the string: 'A Test'.
 
 A Test
 
 
-#####Step 2: Break it into characters
+##### Step 2: Break it into characters
 
 A T e s t
 
 
 Note that spaces count as characters. 
 
-#####Step 3: Convert characters to ASCII codes
+##### Step 3: Convert characters to ASCII codes
 
 Each character should now be converted from text into ASCII. ASCII or the 'American Standard Code for Information Interchange' is a standard that allows computers to communicate different symbols by assigning each one a number. No matter what font or language you use, the same character will always have the same ASCII code. 
 65 32 84 101 115 116
 Note that 'T' and 't' are different ASCII characters. 
 
-#####Step 4: Convert numbers into binary
+##### Step 4: Convert numbers into binary
 Binary is simply base two. All base ten numbers are now converted into 8-bit binary numbers. The eight-bit part means that if they don't actually take up a full eight place values, simply append zeros to the beginning so that they do.
 ```01000001 00100000 01010100 01100101 01110011 01110100```
 
 
-#####Step 5: Add '1' to the end
+##### Step 5: Add '1' to the end
 Put the numbers together:
 ```010000010010000001010100011001010111001101110100```
 
@@ -76,13 +80,15 @@ Add the number '1' to the end:
 ```0100000100100000010101000110010101110011011101001```
 
 
-#####Step 6: Append '0's' to the end
+##### Step 6: Append '0's' to the end
 In this step you add zeros to the end until the length of the message is congruent to 448 mod 512. That means that after dividing the message length by 512, the remainder will be 448. In this case, the length of the original message in binary is 48 + 1 from the last step. That means that we will need to add a total of 399 zero's to the end.
 
 ```0­1­0­0­0­0­0­1­0­0­1­0­0­0­0­0­0­1­0­1­0­1­0­0­0­1­1­0­0­1­0­1­0­1­1­1­0­0­1­1­0­1­1­1­0­1­0­0­1­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­```
 
 If your original message were 56 characters long, it would be exactly 448 digits long once converted into binary. After adding the '1' to the end of that, the new message would be 449 characters long. If that were the case you would need to append 575 zero's to make the message congruent to 448%512.
+
 If your original message were 64 characters long, it would be exactly 512 digits long once converted into binary. After adding the '1' to the end of that, the new message would be 513 characters long. If that were the case you would need to append 447 zero's to make the message congruent to 448%512. 
+
 
   - Step 6.1: Append original message length
 
@@ -95,12 +101,12 @@ If your original message were 64 characters long, it would be exactly 512 digits
 
   The message length should now be an exact multiple of 512. 
 
-#####Step 7: 'Chunk' the message
+##### Step 7: 'Chunk' the message
 We will now break the message up into 512 bit chunks. In this case the message is only 512 bit's long, so there will be only one chunk that will look exactly the same as the last step.
 
 ```0­1­0­0­0­0­0­1­0­0­1­0­0­0­0­0­0­1­0­1­0­1­0­0­0­1­1­0­0­1­0­1­0­1­1­1­0­0­1­1­0­1­1­1­0­1­0­0­1­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­0­1­1­0­0­0­0­```
 
-#####Step 8: Break the 'Chunk' into 'Words'
+##### Step 8: Break the 'Chunk' into 'Words'
 
 Break each chunk up into sixteen 32-bit words
 ```
@@ -122,7 +128,7 @@ Break each chunk up into sixteen 32-bit words
 15: 00000000000000000000000000110000
 ```
 
-#####Step 9: 'Extend' into 80 words
+##### Step 9: 'Extend' into 80 words
 This is the first sub-step. Each chunk will be put through a little function that will create 80 words from the 16 current ones.
 This step is a loop. What that means is that every step after this will be repeated until a certain condition is true.
 In this case we will start by setting the variable 'i' equal to 16. After each run through of the loop we will add 1 to 'i' until 'i' is equal to 79. 
@@ -269,7 +275,7 @@ After step nine is complete we will now have 80 words that look like this:
 79: 10110111011010010100111100111110
 
 
-Step 10: Initialize some variables
+##### Step 10: Initialize some variables
 Set the letters A-->E equal to the variables h0-->h4.
 A = h0
 B = h1
@@ -278,7 +284,7 @@ D = h3
 E = h4
 
 
-Step 11: The main loop
+##### Step 11: The main loop
 This loop will be run once for each word in succession. 
 
 Step 11.1: Four choices
