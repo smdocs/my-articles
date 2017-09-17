@@ -1,6 +1,8 @@
 # Rabbit or Kafka
 
 Mainly depends on the problem in hand. 
+ - For system integration where features like acknowledgments, deeper management are important
+ - Use Kafka, when High ingestion platforms where speed, scale and efficiency is the prime concern and both the consumer and the producer can operate at relatively the same speed.
 
 ### Rabbit MQ Features
 1. Communication in RabbitMQ can be either synchronous or asynchronous as needed. 
