@@ -23,4 +23,5 @@ Mainly depends on the problem in hand.
 
 ### References
 1. [Replay capability tool](http://qdb.io/)
-2. [CloudKarafka]https://www.cloudkarafka.com/)
+2. [CloudKarafka](https://www.cloudkarafka.com/)
+3. [yurisubach blog](https://yurisubach.com/2016/05/19/kafka-or-rabbitmq/)
