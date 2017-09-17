@@ -1,19 +1,19 @@
 # Production Reliability Testing
 
-#####Injection Points
+##### Injection Points
 We have several key “building block” components that are used within Netflix. They help us to isolate failure and define fallbacks (Hystrix), communicate with dependencies (Ribbon), cache data (EVCache), or persist data (Astyanax). Each of these layers make perfect inflection points to inject failure. These layers interface with the FIT context to determine if this request should be impacted. The failure behavior is provided to that layer, which determines how to emulate that failure in a realistic fashion: sleep for a delay period, return a 500, throw an exception, etc.
 
-#####Failure Scenarios
+##### Failure Scenarios
 Whether we are recreating a past outage, or proactively testing the loss of a dependency, we need to know what could fail in order to build a simulation. We use an internal system that traces requests through the entirety of the Netflix ecosystem to find all of the injection points along the path. We then use these to create failure scenarios, which are sets of injection points which should or should not fail. One such example is our critical services scenario, the minimum set of our services required to stream. Another may be the loss of an individual service, including its persistence and caching layers.
 
-#####Automated Testing
+##### Automated Testing
 Failure testing tools are only as valuable as their usage. Our device testing teams have developed automation which: enables failure, launches Netflix on a device, browses through several lists, selects a video, and begins streaming. We began by validating this process works if only our critical services are available. Currently we are extending this to identify every dependency touched during this process, and systematically failing each one individually. As this is running continuously, it helps us to identify vulnerabilities when introduced.
 
-#####Resiliency Strategies
+##### Resiliency Strategies
 FIT has proven useful to bridge the gap between isolated testing and large scale chaos exercises, and make such testing self service. It is one of many tools we have to help us build more resilient systems. The scope of the problem extends beyond just failure testing, we need a range of techniques and tools: designing for failure, better detection and faster diagnosis, regular automated testing, bulkheading, etc. If this sounds interesting to you, we’re looking for great engineers to join our reliability, cloud architecture, and API teams!
 
 
-####Scenarios
+#### Scenarios
 1. One of the app servers dies (power cable yanked out).
 2. One of the nodes in the messaging cluster dies.
 2. All of the app servers leave the load-balancing pool.
@@ -38,7 +38,7 @@ After these mechanisms were written and tested in development, the time came to 
 - Could they confirm that no data was lost during the entire exercise?
 - Were there any surprises?
 
-####Limitations
+#### Limitations
 
 The goal of fault injection and GameDay exercises is to increase confidence in an otherwise complicated or complex system's ability to stay resilient, but they have limitations.
 
