@@ -13,3 +13,4 @@ Mainly depends on the problem in hand.
 2. Kafka can support a large number of consumers and retain large amounts of data with very little overhead. 
 3. Kafka does require Zookeeper and therefore depends on external services.
 4. Kafka presumes that producers generate a massive stream of events on their own timetable - there's no room for throttling producers because consumers are slow, since the data is too massive.
+5. Finally, an important difference between these two systems is that Rabbit offers per-message acknowledgments, while with Kafka you can only acknowledge all messages up to an offset. This has important consequences if processing a message fails: with Rabbit, processing will be re-tried. With Kafka, you can either drop the message or fail processing of a whole batch.
