@@ -1,10 +1,12 @@
-#Mastering Bash and Terminal
+# Mastering Bash and Terminal
 
 If there is one tool that every developer uses regardless of language, platform, or framework it's the terminal. If we are not compiling code, executing git commands, or scp-ing ssl certificates to some remote server, we are finding a new version of cowsay to entertain ourselves while we wait on one of the former. As much as we use the terminal it is important that we are efficient with it. Here are some ways I make my time in the terminal efficient and effective. 
 
 ## Assumed Settings
 
-Some of these commands list `alt` as a prefix character. This is because I have manually set `alt` as a meta key. Without this setting enabled you have to use the `esc` key instead. I recommend enabling the alt key. In Mac Terminal.app this setting is Preferences > Profiles tab > Keyboard sub-tab > at the bottom "Use option as meta key." In iTerm2 the setting is at Preferences > Profiles tab > Keys sub-tab > at the bottom of the window set "left/right option key acts as" to "+Esc". In GNOME terminal Edit > Keyboard Shortcuts > uncheck "Enable menu access keys." 
+Some of these commands list `alt` as a prefix character. This is because I have manually set `alt` as a meta key. Without this setting enabled you have to use the `esc` key instead. I recommend enabling the alt key. 
+
+In Mac Terminal.app this setting is Preferences > Profiles tab > Keyboard sub-tab > at the bottom "Use option as meta key." In iTerm2 the setting is at Preferences > Profiles tab > Keys sub-tab > at the bottom of the window set "left/right option key acts as" to "+Esc". In GNOME terminal Edit > Keyboard Shortcuts > uncheck "Enable menu access keys." 
 
 I also assume you're using bash. I know there are some cool newcomers out there like zsh and fish, but after trying others out I always found that some of my utilities were missing or ill-replaced. If you are not using bash then YMMV.
 
@@ -42,7 +44,6 @@ Now that we know we don't need the up and down arrow keys, what about the left a
 The last four aren't necessarily movements, but I use them in conjunction most of the time.
 
 ## Copy / Paste
-
 One of my favorite MacOS command line utilities is `pbcopy`/`pbpaste`. I like them so much that I created the aliases for my linux machines using `xclip` (shared below). These two commands use your system clipboard (also called the pasteboard, hence the names). You can pipe data to `pbcopy` to copy something to your system clipboard or you can pipe `pbpaste` to another command to paste from your clipboard. Here are some examples that I use:
 
 ```bash
@@ -67,7 +68,6 @@ pbpaste | base64 | pbcopy
 ```
 
  In linux, I put the following in my ~/.bashrc to create the same effect. 
-
 ```bash
 alias pbcopy='xclip -selection clipboard'
 alias pbpaste='xclip -selection clipboard -o'
