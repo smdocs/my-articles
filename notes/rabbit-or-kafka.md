@@ -1,7 +1,7 @@
 # Rabbit or Kafka
 
 Mainly depends on the problem in hand. 
- - For system integration where features like acknowledgments, deeper management are important
+ - RabbitMQ is more suitable for system integration where features like acknowledgments, deeper management of messages are important
  - Use Kafka, when High ingestion platforms where speed, scale and efficiency is the prime concern and both the consumer and the producer can operate at relatively the same speed.
 
 ### Rabbit MQ Features
@@ -21,7 +21,7 @@ Mainly depends on the problem in hand.
     - The major limitation is that each partition can have only one logical consumer (in the consumer group). So it means that if we are working with “slow” messages single issue (slow processing) blocks all other messages submitted to this partition after that message. Different strategies can be used to resolve this issues, one of them is to run another consumer group and sychronize it with existing consumer somehow to avoid duplicated processing of messages.
 
 ### Conclusion
-> Kafka is good for “fast” and reliable consumers while RabbitMQ is good for “slow” and unreliable consumers
+> Kafka is good for “fast” and reliable consumers while RabbitMQ is good for “slow” and unreliable consumers. When messaging is being used for system integration (which can constitute a wide variety of publishers and consumers that can operate at their on speed, RabbitMQ provides a much richer set of functionality to deal with it.
 
 ### References
 1. [Replay capability tool](http://qdb.io/)
