@@ -1,7 +1,7 @@
 # RabbitMQ or Kafka
 
 Mainly depends on the problem in hand. 
- - RabbitMQ is more suitable for system integration where features like acknowledgments, deeper management of messages are important
+ - RabbitMQ is more suitable for system integration where features like acknowledgments, deeper management of messages are important. Consumers and Publishers have different speeds of operation.
  - Use Kafka, when High ingestion platforms where speed, scale and efficiency is the prime concern and both the consumer and the producer can operate at relatively the same speed.
 
 ### Rabbit MQ Features
