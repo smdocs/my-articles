@@ -1,4 +1,4 @@
-# Rabbit or Kafka
+# RabbitMQ or Kafka
 
 Mainly depends on the problem in hand. 
  - RabbitMQ is more suitable for system integration where features like acknowledgments, deeper management of messages are important
