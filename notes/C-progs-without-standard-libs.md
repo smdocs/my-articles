@@ -110,7 +110,8 @@ syscalls without having to include any headers.
 
 So how do we get rid of the standard library? If we try to compile
 our current code with -nostdlib we will run into linker errors:
--------------------------------------------------------------------
+
+```
 $ gcc -s -O2 -nostdlib hello.c
 /usr/lib/gcc/x86_64-pc-linux-gnu/4.9.3/../../../../x86_64-pc-linux-
 gnu/bin/ld: warning: cannot find entry symbol _start; defaulting to
@@ -118,7 +119,7 @@ gnu/bin/ld: warning: cannot find entry symbol _start; defaulting to
 /tmp/ccTn8ClC.o: In function `main':
 hello.c:(.text.startup+0xa): undefined reference to `puts'
 collect2: error: ld returned 1 exit status
--------------------------------------------------------------------
+```
 
 The linker is complaining about _start missing, which is what we
 would expect from our previous debugging.
@@ -139,7 +140,7 @@ syscalls and write a simple program that uses puts.
 The strace method is extremely useful. If you don't know how to
 do something with syscalls, do it with libc and then strace it to
 see which syscalls it uses on the target architecture.
--------------------------------------------------------------------
+```
 $ cat > puts.c << "EOF"
 #include <stdio.h>
 
@@ -157,7 +158,7 @@ $ strace ./a.out > /dev/null
 write(1, "hello\n", 6)                  = 6
 exit_group(0)                           = ?
 +++ exited with 0 +++
--------------------------------------------------------------------
+```
 
 So it's using the write syscall.
 
@@ -166,7 +167,7 @@ strace output is in stderr and we don't want to have it mixed with
 a.out's output.
 
 Let's check the manpage for write:
--------------------------------------------------------------------
+```
 $ man 2 write
 SYNOPSIS
        #include <unistd.h>
@@ -188,7 +189,7 @@ as 0, 1 and 2.
 
 So all we have to do is replace our puts with a write to stream 1
 (stdout).
--------------------------------------------------------------------
+
 #include <unistd.h>
 
 int main(int argc, char* argv[])
@@ -197,10 +198,10 @@ int main(int argc, char* argv[])
 
     return 0;
 }
--------------------------------------------------------------------
+\
 
 Let's try to compile it again:
--------------------------------------------------------------------
+
 $ gcc -s -O2 -nostdlib hello.c
 hello.c: In function ?main?:
 hello.c:6:5: warning: ignoring return value of ?write?, declared
@@ -213,7 +214,7 @@ gnu/bin/ld: warning: cannot find entry symbol _start; defaulting to
 /tmp/ccJXwSsr.o: In function `main':
 hello.c:(.text.startup+0x14): undefined reference to `write'
 collect2: error: ld returned 1 exit status
--------------------------------------------------------------------
+```
 
 Oh no! The "write" function is part of the standard library!
 How do we invoke syscalls without having to link the standard lib?
