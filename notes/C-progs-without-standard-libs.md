@@ -33,9 +33,8 @@ I might not be an expert yet, but I will share my methods with you.
 For now this guide is linux-only, but I will be writing a windows
 version when I feel like firing up a virtual machine.
 
-###################################################################
-                         Basic AMD64 Setup
-###################################################################
+
+### Basic AMD64 Setup
 When we learn C, we are taught that main is the first function
 called in a C program. In reality, main is simply a convention of
 the standard library.
@@ -44,7 +43,7 @@ Let's write a simple hello world and debug it.
 We will compile with debug information (flag -g) as well as no
 optimization (-O0) to be able to see as much as possible in the
 debugger.
--------------------------------------------------------------------
+```
 $ cat > hello.c << "EOF"
 #include <stdio.h>
 
@@ -80,7 +79,7 @@ we actually care about seeing libc functions:
     stack_end=0x7fffffffd7e8)
     at libc-start.c:289
 #2  0x0000000000400489 in _start ()
--------------------------------------------------------------------
+```
 
 That's much better! As we can see, the first function that's really
 called is _start, which then calls __libc_start_main which is
@@ -94,11 +93,11 @@ since we want a static executable.
 
 Let's recompile our hello world with optimization (-O2), without
 debug information and with stripping (-s) to see how large it is:
--------------------------------------------------------------------
+```
 $ gcc -s -O2 hello.c
 $ wc -c a.out
 6208 a.out
--------------------------------------------------------------------
+```
 6kb for a simple hello world? that's a lot!
 
 Even if I add other size optimization flags such as
