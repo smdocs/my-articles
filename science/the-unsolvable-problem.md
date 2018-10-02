@@ -28,11 +28,13 @@ in its properties. But there are *****quantum phase transitions*** that occur wh
 E.g. changing the magnetic field around a material can transform it from an insulator to a super conductor or cause
 a solid to become a ***superfluid**
 
-### How can a material go through a phase transition at a temperature of absolute zero (-273.15 Celsius) at which 
-### there is no heat at all to provide any energy?
+### How can a material go through a phase transition at a temperature of absolute zero (-273.15 Celsius) at which there is no heat at all to provide any energy?
 ### It comes down to the Spectral Gap.
 When a material is 'gapless' the energy needed to reach an excited state is alomost zero. Any tiniest amount of 
 energy can push the material through a phase transition.
+
+The answer lies in 'quantum effects' that dominate physics at these very low temperatures, the material can **borrow** this energy from nowhere.
+
 
 
 
