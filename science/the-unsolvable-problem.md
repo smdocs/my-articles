@@ -35,6 +35,11 @@ energy can push the material through a phase transition.
 
 The answer lies in 'quantum effects' that dominate physics at these very low temperatures, the material can **borrow** this energy from nowhere.
 
+Spectral gap is so fundamental to understanding of quantum phases, most open problems in condensed matter Physics boils down to solving this same
+problem. A closely related problem is known as the [mass gap](https://en.wikipedia.org/wiki/Yang%E2%80%93Mills_existence_and_mass_gap)
 
+Proving these ideas is turning out to be extremely difficult so much so that these problems are now being looked at as similar to the unsolvable 'Halting 
+Problem' or the problem of 'how to tile an infinite bathroom'. By connecting these problems in physics with unsolvable problems in Mathematics and Computer Science,
+one can show that these problems in physics are unsolvable.
 
-
+### Linking spectral gap to quantum computing
