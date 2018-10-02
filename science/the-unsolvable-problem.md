@@ -6,7 +6,7 @@
   and Quantum Physics. The main problem was to explore these mathematical results in order to determine
   whether certain problems in physics are 'decidable' or 'undecidable'.
 
-  ### Spectral Gap
+  ### [Spectral Gap]()
   If you heat up a substance it begins to glow as atoms within it emits light, the yellow orange light from
   the sodium street lights is a good example. Sodium atoms emit lights at a wavelength of 590 nanometers in 
   the yellow part of the visible spectrum.
@@ -28,8 +28,8 @@ in its properties. But there are *****quantum phase transitions*** that occur wh
 E.g. changing the magnetic field around a material can transform it from an insulator to a super conductor or cause
 a solid to become a ***superfluid**
 
-### How can a material go through a phase transition at a temperature of absolute zero (-273.15 Celsius) at which there is no heat at all to provide any energy?
-### It comes down to the Spectral Gap.
+### [How can a material go through a phase transition at a temperature of absolute zero (-273.15 Celsius) at which there is no heat at all to provide any energy?
+### It comes down to the Spectral Gap.]()
 When a material is 'gapless' the energy needed to reach an excited state is alomost zero. Any tiniest amount of 
 energy can push the material through a phase transition.
 
@@ -42,4 +42,4 @@ Proving these ideas is turning out to be extremely difficult so much so that the
 Problem' or the problem of 'how to tile an infinite bathroom'. By connecting these problems in physics with unsolvable problems in Mathematics and Computer Science,
 one can show that these problems in physics are unsolvable.
 
-### Linking spectral gap to quantum computing
+### [Linking spectral gap to quantum computing]()
